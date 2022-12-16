@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Column extends Component {
-  render() {
-    let {colwrap} = this.props;
+export default function Column (props) {
+    let {colwrap} = props;
     let colval = `col-md-${colwrap} my-3`;
     return (
-      <div className={colval}>{this.props.children}</div>
+      <div className={colval}>{props.children}</div>
     );
-  }
+  
 }

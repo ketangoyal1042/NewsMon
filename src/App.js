@@ -1,37 +1,33 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 import News from './components/News'
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './AppRouter';
 import LoadingBar from 'react-top-loading-bar'
 
-export default class App extends Component {
+export default function App() {
   // apiKey = process.env.MY_SECRET_NEWS_API_KEY
-  apiKey = "c7b880be7eab4091b094141b8dc48de8";
+  const apiKey = "c7b880be7eab4091b094141b8dc48de8";
+  const [progress, setProgress] = useState(10)
   
-  state = {
-    progress:10
+  const setprogress = (chngprogress) => {
+    // this.setState({ progress: chngprogress });
+    setProgress(chngprogress);
   }
-  setprogress = (chngprogress) => {
-    // console.log(this.state.progress);
-    this.setState({ progress: chngprogress });
-  }
-  render() {
     return (
       <div > 
         <BrowserRouter>
         <LoadingBar
         color='#f11946'
         height={5}
-        progress={this.state.progress}
+        progress={progress}
         />
         <Navbar />
-        <AppRouter progress={this.setprogress} apiKey={this.apiKey}/>
+        <AppRouter progress={setprogress} apiKey={apiKey}/>
         {/* <News PageSize={9} Country={"in"} category={"entertainment"}/> */}
         </BrowserRouter>
       </div>
     );
-  }
 }
 
 // business

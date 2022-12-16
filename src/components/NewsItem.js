@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Column from './Column';
 
-export default class NewsItem extends Component {
-    render() {
-        let { title, description, image, url, author, publishedat, src} = this.props;
+export default function NewsItem(props){
+        let { title, description, image, url, author, publishedat, src} = props;
         return (
             <Column colwrap={4}>
                 <div className="card" ><span className="badge bg-secondary">{src}</span>
@@ -17,5 +16,5 @@ export default class NewsItem extends Component {
                 </div>
             </Column>
         );
-    }
+    
 }
