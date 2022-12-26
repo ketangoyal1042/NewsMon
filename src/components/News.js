@@ -12,7 +12,6 @@ export default function News(props) {
     const [Page, setPage] = useState(1)
     const [totalResults, setTotalResults] = useState(0)
     
-    document.title = `${props.category} News | All About World`;
     
     const updateNews = async()=> {
         props.setProgress(30);
@@ -27,25 +26,26 @@ export default function News(props) {
         props.setProgress(100);
     }
 
-    const componentDidMount= async()=> {
-        updateNews();
-    }
+    // const componentDidMount= async()=> {
+    //     updateNews();
+    // }
     useEffect(() => {
+        document.title = `${props.category} News | All About World`;
         updateNews();
       }, []) // it works as like componentdidmount
 
-    const HandlePrev = async () => {
-        setPage(Page-1);
-        updateNews();
-    }
-    const HandleNext = async () => {
-        setPage(Page+1);
-        updateNews();
-    }
+    // const HandlePrev = async () => {
+    //     setPage(Page-1);
+    //     updateNews();
+    // }
+    // const HandleNext = async () => {
+    //     setPage(Page+1);
+    //     updateNews();
+    // }
 
     const fetchMoreData = async () => {
-        setPage(Page+1);
         const fetchedNews = await ProductService.getarticles(Page+1, props.PageSize, props.category, props.apiKey);
+        setPage(Page+1);
         // fetchedNews.then((res) => {this.setState({Articles:res.articles});})   //way 1 (if not used the async await)
         setArticles(Articles.concat(fetchedNews.articles))
         setLoading(false)
@@ -53,7 +53,7 @@ export default function News(props) {
 
         return (
             <>
-                <h2 className='text-center'>Top News of <b>{props.category}</b> <i> | Page :{Page}</i></h2>
+                <h2 className='text-center' style={{marginTop: "50px"}}>Top News of <b>{props.category}</b> <i> | Page :{Page}</i></h2>
                 {/* {loading && <Loading />} */}
                 <InfiniteScroll
                     dataLength={Articles.length}

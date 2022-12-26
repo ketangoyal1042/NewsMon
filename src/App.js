@@ -8,12 +8,12 @@ import LoadingBar from 'react-top-loading-bar'
 export default function App() {
   // apiKey = process.env.MY_SECRET_NEWS_API_KEY
   const apiKey = "c7b880be7eab4091b094141b8dc48de8";
-  const [progress, setProgress] = useState(10)
+  const [progress, setParogress] = useState(10)
   
-  const setprogress = (chngprogress) => {
+  // const setprogress = (chngprogress) => {
     // this.setState({ progress: chngprogress });
-    setProgress(chngprogress);
-  }
+    // setProgress(chngprogress);
+  // }
     return (
       <div > 
         <BrowserRouter>
@@ -23,8 +23,7 @@ export default function App() {
         progress={progress}
         />
         <Navbar />
-        <AppRouter progress={setprogress} apiKey={apiKey}/>
-        {/* <News PageSize={9} Country={"in"} category={"entertainment"}/> */}
+        <AppRouter progress={setParogress} apiKey={apiKey}/>
         </BrowserRouter>
       </div>
     );
